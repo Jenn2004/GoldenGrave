@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: goldengrove-api
+  datasource:
+    url: jdbc:h2:mem:goldengrove;DB_CLOSE_DELAY=-1;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:GoldenGroveSecretKeyForJWTTokenGenerationMustBeLongEnough2026}
+    expiration-ms: 86400000
+  cors:
+    allowed-origins: http://localhost:5173,http://127.0.0.1:5173
+  razorpay:
+    key-id: ${RAZORPAY_KEY_ID:rzp_test_placeholder}
+    key-secret: ${RAZORPAY_KEY_SECRET:placeholder_secret}
+  admin:
+    email: ${ADMIN_EMAIL:admin@goldengrove.com}
+    password: ${ADMIN_PASSWORD:Admin@123}
+    name: Golden Grove Admin
